@@ -1,12 +1,17 @@
+
+
     <div class="container pt-3">
 
+        <p class="display-2">Latest News</p>
+
         <div *ngFor="let post of posts" class="row no-gutters position-relative mb-3 justify-content-center text-justify table-bordered">
-            <div class="col-md-6 col-lg-4 mb-md-0 p-md-4 justify-content-center d-flex">
-                <img src="https://via.placeholder.com/200" class="ml-sm-3" alt="post image">
+            <div class="justify-content-center d-flex align-items-center">
+                <img src="https://via.placeholder.com/500x200" class="p-2 col-12" alt="post image">
             </div>
             <div class="col-md-6 position-static p-4">
                 <h5 class="mt-0">{{post.title}}</h5>
                 <p>{{post.body}}</p>
+                <button class="btn btn-link" (click)="navigateToPost(post.id)">Read Post Nummber: <b>{{ post.id }}</b></button>
             </div>
         </div>
 
@@ -17,7 +22,7 @@
         <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
         </li>
-        <li *ngFor="let page of pages" class="page-item"><a class="page-link" href="#">{{ page }}</a></li>
+        <li *ngFor="let page of pages" class="page-item"><a class="page-link a" href="#" (click)="navigate(page)" [routerLink]="['news', page]">{{ page }}</a></li>
 
         <li class="page-item">
             <a class="page-link" href="#">Next</a>

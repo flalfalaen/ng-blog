@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api.service";
+import {distinct, distinctUntilChanged, map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-news',
@@ -8,32 +10,52 @@ import {ApiService} from "../../services/api.service";
 })
 export class NewsComponent implements OnInit {
 
+  public post;
   public posts;
   public pages;
-  public dump;
+  public pageNumber;
 
-  constructor(public apiService: ApiService) { }
+  constructor(public apiService: ApiService,
+              public router: Router) { }
+
+  //bicycle distinct - coz pipe.disctinct doesnt work
+  distinctCustom(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+
+  // here we are navigating to the post pages
+  navigate(page) {
+    this.apiService.getRelatedPosts(page).subscribe(
+        data => {
+          this.posts = data;
+    });
+    this.router.navigate(['news', page])
+  }
+
+  navigateToPost(currentPostId){
+    this.router.navigate(['post', currentPostId])
+  }
+
 
   ngOnInit() {
 
-    this.apiService.getAllPosts().subscribe(
+    //here we are calling all posts and getting only userId for understand how many pages need to setup
+    this.apiService.getAllPosts().pipe(
+        map( res => Object.values(res).map( e => e.userId ))
+        ).subscribe(
         data => {
-          // console.log(data);
-          // this.dump = data;
-          // this.pages = this.dump.filter( (item) => {
-          //     return item.userId;
-          // });
-          // this.pages = data;
-          // console.log(this.pages);
+          this.pages = data.filter(this.distinctCustom);
         }
     );
 
-    this.apiService.getRelatedPosts(2).subscribe(data => {
-      console.log(data);
+    //here the first call on initialization
+    this.apiService.getRelatedPosts(1).subscribe(data => {
       this.posts = data;
-      // this.pages = data.filter()
     });
 
+    this.apiService.getSinglePost(1).subscribe(
+        responce => console.log(responce)
+    )
 
   }
 

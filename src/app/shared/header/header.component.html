@@ -17,7 +17,7 @@
                 <a class="nav-link" href="#" [routerLink]="''">Home</a>
             </li>
             <li class="nav-item" (click)="link='news'" [class.active]="link==='news'">
-                <a class="nav-link" href="#" [routerLink]="'news'">News</a>
+                <a class="nav-link" href="#" [routerLink]="['news', 1]">News</a>
             </li>
             <li class="nav-item" (click)="link='about'" [class.active]="link==='about'">
                 <a class="nav-link" href="#">About</a>

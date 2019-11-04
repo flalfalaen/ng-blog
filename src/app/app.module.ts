@@ -16,6 +16,9 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { LogInSignInFormComponent } from './shared/log-in-sign-in-form/log-in-sign-in-form.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "./services/api.service";
+import { LoaderService } from "./services/loader.service";
+import  { ModalModule } from "ngx-bootstrap";
+import {LoaderInterceptorService} from "./services/loader-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -35,9 +38,11 @@ import { ApiService } from "./services/api.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot(),
   ],
-  providers: [ApiService],
+  entryComponents: [LoaderComponent],
+  providers: [ApiService, LoaderService, LoaderInterceptorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
