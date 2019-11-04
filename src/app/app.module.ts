@@ -14,6 +14,8 @@ import { UserCabinetComponent } from './pages/user-cabinet/user-cabinet.componen
 import { PopupComponent } from './shared/popup/popup.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LogInSignInFormComponent } from './shared/log-in-sign-in-form/log-in-sign-in-form.component';
+import { HttpClientModule } from "@angular/common/http";
+import { ApiService } from "./services/api.service";
 
 @NgModule({
   declarations: [
@@ -32,9 +34,10 @@ import { LogInSignInFormComponent } from './shared/log-in-sign-in-form/log-in-si
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
