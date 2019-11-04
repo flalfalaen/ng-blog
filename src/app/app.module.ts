@@ -14,11 +14,11 @@ import { UserCabinetComponent } from './pages/user-cabinet/user-cabinet.componen
 import { PopupComponent } from './shared/popup/popup.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LogInSignInFormComponent } from './shared/log-in-sign-in-form/log-in-sign-in-form.component';
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ApiService } from "./services/api.service";
 import { LoaderService } from "./services/loader.service";
 import  { ModalModule } from "ngx-bootstrap";
-import {LoaderInterceptorService} from "./services/loader-interceptor.service";
+import {LoaderInterceptor} from "./services/loader.interceptor";
 
 @NgModule({
   declarations: [
@@ -42,7 +42,9 @@ import {LoaderInterceptorService} from "./services/loader-interceptor.service";
     ModalModule.forRoot(),
   ],
   entryComponents: [LoaderComponent],
-  providers: [ApiService, LoaderService, LoaderInterceptorService],
+  providers: [ApiService, LoaderService,
+    // { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,10 +40,9 @@ export class PostComponent implements OnInit {
 
     this.apiService.getSinglePost(this.currentPost).subscribe(
         responcePost => {
-          console.log(responcePost);
           this.post = responcePost[0];
           this.comments = responcePost[1];
-          // this.loader.hideLoader();
+          this.loader.hideLoader()
         }
     )
 
