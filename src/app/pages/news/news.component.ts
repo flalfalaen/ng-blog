@@ -23,8 +23,8 @@ export class NewsComponent implements OnInit {
           // this.pages = this.dump.filter( (item) => {
           //     return item.userId;
           // });
-          this.pages = data;
-          console.log(this.pages);
+          // this.pages = data;
+          // console.log(this.pages);
         }
     );
 
@@ -34,7 +34,6 @@ export class NewsComponent implements OnInit {
       // this.pages = data.filter()
     });
 
-    console.log('test' + this.posts);
 
   }
 

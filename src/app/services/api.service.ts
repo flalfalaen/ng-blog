@@ -14,9 +14,7 @@ export class ApiService {
     constructor(private httpRequest: HttpClient) {}
 
     getAllPosts() {
-        return this.httpRequest.get('https://jsonplaceholder.typicode.com/posts').pipe(
-            filter( e => e.userId >2 )
-        )
+        return this.httpRequest.get('https://jsonplaceholder.typicode.com/posts')
     }
 
     getRelatedPosts(userId) {
