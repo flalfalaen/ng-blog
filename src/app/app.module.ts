@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,14 @@ import { ApiService } from "./services/api.service";
 import { LoaderService } from "./services/loader.service";
 import  { ModalModule } from "ngx-bootstrap";
 import {LoaderInterceptor} from "./services/loader.interceptor";
+
+export function init_app() {
+  return () => {
+    // todo loading photo utl = https://jsonplaceholder.typicode.com/albums/1/photos
+    // alert('halt and catch fire'); // halt our app before press 'OK'
+    console.log( 'after app init');
+  };
+}
 
 @NgModule({
   declarations: [
@@ -43,8 +51,16 @@ import {LoaderInterceptor} from "./services/loader.interceptor";
   ],
   entryComponents: [LoaderComponent],
   providers: [ApiService, LoaderService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: init_app,
+      multi: true
+    }
     ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+}
