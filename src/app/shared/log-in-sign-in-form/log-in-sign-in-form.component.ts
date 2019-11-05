@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-log-in-sign-in-form',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log-in-sign-in-form.component.scss']
 })
 export class LogInSignInFormComponent implements OnInit {
+  answers = [{
+    type: 'yes',
+    text: 'yes'
+  }, {
+    type: 'no',
+    text: 'no'
+  }];
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  submitForm(form: NgForm) {
+    console.log('Submitted!', form);
+  }
 }

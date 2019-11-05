@@ -19,6 +19,7 @@ import { ApiService } from "./services/api.service";
 import { LoaderService } from "./services/loader.service";
 import  { ModalModule } from "ngx-bootstrap";
 import {LoaderInterceptor} from "./services/loader.interceptor";
+import {FormsModule} from "@angular/forms";
 
 export function init_app() {
   return () => {
@@ -48,8 +49,9 @@ export function init_app() {
     AppRoutingModule,
     HttpClientModule,
     ModalModule.forRoot(),
+    FormsModule,
   ],
-  entryComponents: [LoaderComponent],
+  entryComponents: [LoaderComponent, LogInSignInFormComponent],
   providers: [ApiService, LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     {

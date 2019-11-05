@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {LoaderComponent} from "../shared/loader/loader.component";
+import { LogInSignInFormComponent } from "../shared/log-in-sign-in-form/log-in-sign-in-form.component";
 import {BsModalService, BsModalRef} from "ngx-bootstrap";
 
 @Injectable({
@@ -11,6 +12,11 @@ export class LoaderService {
 
     constructor(public bsModalService: BsModalService) {
 
+    }
+
+    showFrom() {
+        this.bsModalRef = this.bsModalService.show(LogInSignInFormComponent, {
+        })
     }
 
     showLoader() {
