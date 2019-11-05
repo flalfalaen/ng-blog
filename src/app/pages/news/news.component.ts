@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ContentChild, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {distinct, distinctUntilChanged, map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {LoaderService} from "../../services/loader.service";
 
 @Component({
   selector: 'app-news',
@@ -10,13 +11,15 @@ import {Router} from "@angular/router";
 })
 export class NewsComponent implements OnInit {
 
+
   public post;
   public posts;
   public pages;
   public pageNumber;
 
   constructor(public apiService: ApiService,
-              public router: Router) { }
+              public router: Router,
+              public loader: LoaderService) { }
 
   //bicycle distinct - coz pipe.disctinct doesnt work
   distinctCustom(value, index, self) {
@@ -25,10 +28,12 @@ export class NewsComponent implements OnInit {
 
   // here we are navigating to the post pages
   navigate(page) {
+    this.loader.showLoader(); // show loader
     this.apiService.getRelatedPosts(page).subscribe(
         data => {
+          this.loader.hideLoader(); // hide loader
           this.posts = data;
-    });
+        });
     this.router.navigate(['news', page])
   }
 
@@ -36,14 +41,14 @@ export class NewsComponent implements OnInit {
     this.router.navigate(['post', currentPostId])
   }
 
-
   ngOnInit() {
-
+    this.loader.showLoader(); // show loader
     //here we are calling all posts and getting only userId for understand how many pages need to setup
     this.apiService.getAllPosts().pipe(
         map( res => Object.values(res).map( e => e.userId ))
         ).subscribe(
         data => {
+          this.loader.hideLoader(); // hide loader
           this.pages = data.filter(this.distinctCustom);
         }
     );
@@ -52,10 +57,6 @@ export class NewsComponent implements OnInit {
     this.apiService.getRelatedPosts(1).subscribe(data => {
       this.posts = data;
     });
-
-    this.apiService.getSinglePost(1).subscribe(
-        responce => console.log(responce)
-    )
 
   }
 

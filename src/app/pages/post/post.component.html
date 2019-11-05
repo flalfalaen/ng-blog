@@ -1,4 +1,4 @@
-
+<ng-container #postSection>
 <div *ngFor="let data of post" class="container-fluid row justify-content-center">
 
     <h5 class="mt-0 display-3 text-center">{{ data.title | titlecase }}</h5>
@@ -11,27 +11,31 @@
             <p>{{ data.body }}</p>
             <p>{{ data.body }}</p>
             <p class="small text-secondary">post id: {{ data.id }}</p>
-
-        </div>
-    </div>
-
-
-</div>
-
-<div class="container">
-    <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section </button>
-
-</div>
-
-<div class="container" [hidden]="!commentsShow">
-    <div *ngFor="let comment of comments" class="media shadow p-3 mb-5 bg-white rounded p-2 m-3">
-        <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">
-
-        <div class="media-body">
-            <p class="mt-0 lead">Commented by: <b> {{ comment.name | titlecase }} </b></p>
-            <p>mail to: <a href="mailto:{{ comment.email }}">{{ comment.email }}</a></p>
-            {{ comment.body }}
-            <p class="small text-secondary"> {{ comment.id }} min ago... </p>
         </div>
     </div>
 </div>
+</ng-container>
+
+<ng-template #showCommentsButton>
+    <div class="container">
+        <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section </button>
+    </div>
+</ng-template>
+<ng-content *ngIf="!showButton; else showCommentsButton"></ng-content>
+<!--<div *ngTemplateOutlet="showCommentsButton"></div>-->
+
+<ng-container #commentsContainer>
+    <div class="container" [hidden]="!commentsShow">
+        <div *ngFor="let comment of comments" class="media shadow p-3 mb-5 bg-white rounded p-2 m-3">
+            <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">
+
+            <div class="media-body">
+                <p class="mt-0 lead">Commented by: <b> {{ comment.name | titlecase }} </b></p>
+                <p>mail to: <a href="mailto:{{ comment.email }}">{{ comment.email }}</a></p>
+                {{ comment.body }}
+                <p class="small text-secondary"> {{ comment.id }} min ago... </p>
+            </div>
+        </div>
+    </div>
+</ng-container>
+

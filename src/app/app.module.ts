@@ -43,7 +43,7 @@ import {LoaderInterceptor} from "./services/loader.interceptor";
   ],
   entryComponents: [LoaderComponent],
   providers: [ApiService, LoaderService,
-    // { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
     ],
   bootstrap: [AppComponent]
 })

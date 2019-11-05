@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ContentChild, ElementRef, OnInit, TemplateRef} from '@angular/core';
 import {Router} from "@angular/router";
 import {ApiService} from "../../services/api.service";
 import {LoaderService} from "../../services/loader.service";
@@ -10,6 +10,9 @@ import {LoaderService} from "../../services/loader.service";
 })
 export class PostComponent implements OnInit {
 
+  @ContentChild('commentsContainer', {static: false}) commentsContainer: ElementRef<any>;
+
+  public showButton = false;
   public currentPost = '';
   private post;
   private comments;
@@ -18,7 +21,8 @@ export class PostComponent implements OnInit {
   public commentsShow = false;
 
   constructor(public router: Router,
-              public apiService: ApiService, public loader: LoaderService) { }
+              public apiService: ApiService,
+              public loader: LoaderService) { }
 
 
   toggleShowHide() {
@@ -31,22 +35,20 @@ export class PostComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit() {
-    this.loader.showLoader();
+    this.loader.showLoader(); // show loader
 
     this.currentPost = this.router.url.replace('/post/','');
-
     this.apiService.getSinglePost(this.currentPost).subscribe(
         responcePost => {
           this.post = responcePost[0];
           this.comments = responcePost[1];
-          this.loader.hideLoader()
+          this.loader.hideLoader(); // hide loader
+          console.log(this.commentsContainer);
+          this.showButton = true;
         }
     )
 
-    // this.apiService.getSinglePost()
   }
 
 }
