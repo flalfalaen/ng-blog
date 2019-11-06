@@ -10,6 +10,7 @@ export class HoverDirective {
               private elementRef: ElementRef) { }
 
   @HostListener('mouseenter') mouseEnter() {
+    // this.renderer.setAttribute(this.elementRef.nativeElement,  'class', this.shadowBox);
     this.renderer.addClass(this.elementRef.nativeElement,  'border');
     this.renderer.addClass(this.elementRef.nativeElement,  'media');
     this.renderer.addClass(this.elementRef.nativeElement,  'shadow');
