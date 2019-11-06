@@ -33,7 +33,7 @@
 
             <div class="media-body">
                 <p class="mt-0 lead">Commented by: <b> {{ comment.name | titlecase }} </b></p>
-                <p>mail to: <a href="mailto:{{ comment.email }}">{{ comment.email }}</a></p>
+                <p>mail to: <a href="mailto:{{ comment.email }}">{{ comment.email | emailPointer}}</a></p>
                 {{ comment.body }}
                 <p class="small text-secondary"> {{ comment.id }} min ago... </p>
             </div>

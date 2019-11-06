@@ -23,6 +23,7 @@ import {FormsModule} from "@angular/forms";
 import { ImageCardComponent } from './pages/post/image-card/image-card.component';
 import { CardContentComponent } from './pages/main/card-content/card-content.component';
 import { HoverDirective } from './directives/hover.directive';
+import { EmailPointerPipe } from './pipes/email-pointer.pipe';
 
 export function init_app() {
   return () => {
@@ -48,7 +49,8 @@ export function init_app() {
     LogInSignInFormComponent,
     ImageCardComponent,
     CardContentComponent,
-    HoverDirective
+    HoverDirective,
+    EmailPointerPipe
   ],
   imports: [
     BrowserModule,
