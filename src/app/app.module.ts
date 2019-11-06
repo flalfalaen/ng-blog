@@ -22,6 +22,7 @@ import {LoaderInterceptor} from "./services/loader.interceptor";
 import {FormsModule} from "@angular/forms";
 import { ImageCardComponent } from './pages/post/image-card/image-card.component';
 import { CardContentComponent } from './pages/main/card-content/card-content.component';
+import { HoverDirective } from './directives/hover.directive';
 
 export function init_app() {
   return () => {
@@ -46,7 +47,8 @@ export function init_app() {
     LoaderComponent,
     LogInSignInFormComponent,
     ImageCardComponent,
-    CardContentComponent
+    CardContentComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,

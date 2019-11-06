@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardContentComponent } from "./card-content/card-content.component";
+import { HoverDirective } from "../../directives/hover.directive";
 
 @Component({
   selector: 'app-main',
