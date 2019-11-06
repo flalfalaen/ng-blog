@@ -20,6 +20,8 @@ import { LoaderService } from "./services/loader.service";
 import  { ModalModule } from "ngx-bootstrap";
 import {LoaderInterceptor} from "./services/loader.interceptor";
 import {FormsModule} from "@angular/forms";
+import { ImageCardComponent } from './pages/post/image-card/image-card.component';
+import { CardContentComponent } from './pages/main/card-content/card-content.component';
 
 export function init_app() {
   return () => {
@@ -42,7 +44,9 @@ export function init_app() {
     UserCabinetComponent,
     PopupComponent,
     LoaderComponent,
-    LogInSignInFormComponent
+    LogInSignInFormComponent,
+    ImageCardComponent,
+    CardContentComponent
   ],
   imports: [
     BrowserModule,

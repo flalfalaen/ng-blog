@@ -1,4 +1,13 @@
-import {Component, ContentChild, ElementRef, OnInit, TemplateRef} from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 import {Router} from "@angular/router";
 import {ApiService} from "../../services/api.service";
 import {LoaderService} from "../../services/loader.service";
@@ -8,14 +17,15 @@ import {LoaderService} from "../../services/loader.service";
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, AfterContentInit, AfterViewInit {
 
-  @ContentChild('commentsContainer', {static: false}) commentsContainer: ElementRef<any>;
+  @ViewChild('showCommentsButton', {static: false}) showCommentsButton: TemplateRef<any>;
 
   public showButton = false;
   public currentPost = '';
   private post;
   private comments;
+  private photos;
 
   public showHide = 'Show';
   public commentsShow = false;
@@ -43,12 +53,18 @@ export class PostComponent implements OnInit {
         responcePost => {
           this.post = responcePost[0];
           this.comments = responcePost[1];
+          this.photos = responcePost[2][0].url;
           this.loader.hideLoader(); // hide loader
-          console.log(this.commentsContainer);
           this.showButton = true;
         }
     )
+  }
 
+  ngAfterContentInit() {
+  }
+
+  ngAfterViewInit() {
+    console.log(this.showCommentsButton)
   }
 
 }

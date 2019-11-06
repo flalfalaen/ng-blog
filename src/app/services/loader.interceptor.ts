@@ -11,8 +11,6 @@ export class LoaderInterceptor implements HttpInterceptor{
 
     constructor(public injector: Injector){}
 
-    // todo this bloody scumbag piece of code by retard
-
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const loader = this.injector.get(LoaderService);
         // loader.showLoader();

@@ -1,6 +1,5 @@
 <ng-container #postSection>
 <div *ngFor="let data of post" class="container-fluid row justify-content-center">
-
     <h5 class="mt-0 display-3 text-center">{{ data.title | titlecase }}</h5>
     <div class="row no-gutters position-relative mb-3 justify-content-center text-justify">
         <div class="col-md-6 col-lg-4 mb-md-0 p-md-4">
@@ -16,15 +15,18 @@
 </div>
 </ng-container>
 
+<!-- sharing data between component -->
+<app-image-card [imageSrc]="photos"></app-image-card>
+
 <ng-template #showCommentsButton>
     <div class="container">
         <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section </button>
     </div>
 </ng-template>
-<ng-content *ngIf="!showButton; else showCommentsButton"></ng-content>
+<ng-content *ngIf="!showButton; else showCommentsButton" select="[]"></ng-content>
 <!--<div *ngTemplateOutlet="showCommentsButton"></div>-->
 
-<ng-container #commentsContainer>
+<ng-container>
     <div class="container" [hidden]="!commentsShow">
         <div *ngFor="let comment of comments" class="media shadow p-3 mb-5 bg-white rounded p-2 m-3">
             <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">

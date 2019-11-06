@@ -36,12 +36,20 @@ export class ApiService {
     getSinglePost(postId) {
         // this.loader.showLoader();
         return forkJoin(
-            this.httpRequest.get('https://jsonplaceholder.typicode.com/posts?id=' + postId),
-            this.httpRequest.get('https://jsonplaceholder.typicode.com/posts/1/comments?postId=' + postId)
-        ).pipe(
-            delay(1500),
-            // finalize(() => this.loader.hideLoader())
+            this.httpRequest.get('https://jsonplaceholder.typicode.com/posts?id=' + postId).pipe(
+                delay(2000),
+                // finalize(() => this.loader.hideLoader())
+            ),
+            this.httpRequest.get('https://jsonplaceholder.typicode.com/posts/1/comments?postId=' + postId).pipe(
+                delay(1000),
+                // finalize(() => this.loader.hideLoader())
+            ),
+            this.httpRequest.get('https://jsonplaceholder.typicode.com/albums/1/photos?id=' + postId),
         )
+
+    }
+
+    getImagesForSinglePost(postId){
 
     }
 }
