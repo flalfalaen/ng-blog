@@ -20,7 +20,7 @@
 
 <ng-template #showCommentsButton>
     <div class="container mb-5">
-        <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section </button>
+        <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section: ({{ commentsNumber }})</button>
     </div>
 </ng-template>
 <ng-content *ngIf="!showButton; else showCommentsButton" select="[]"></ng-content>
@@ -32,10 +32,10 @@
             <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">
 
             <div class="media-body">
-                <p class="mt-0 lead">Commented by: <b> {{ comment.name | titlecase }} </b></p>
-                <p>mail to: <a href="mailto:{{ comment.email }}">{{ comment.email | emailPointer}}</a></p>
-                {{ comment.body }}
-                <p class="small text-secondary"> {{ comment.id }} min ago... </p>
+                <p class="mt-0 lead"><i class="fa fa-lg fa-user mr-1"></i>Commented by: <b> {{ comment.name | titlecase | emailPointer }} </b></p>
+                <p class="lead small text-secondary"><i class="fa fa-lg fa-paper-plane"> </i> <a class="pl-1 text-info" href="mailto:{{ comment.email }}">{{ comment.email | uppercase }}</a></p>
+                <p>{{ comment.body | titlecase }}</p>
+                <p class="small text-secondary"><i class="fa fa-lg fa-clock-o"></i> {{ comment.id }} min ago... </p>
             </div>
         </div>
     </div>

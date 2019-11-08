@@ -25,6 +25,7 @@ import { CardContentComponent } from './pages/main/card-content/card-content.com
 import { HoverDirective } from './directives/hover.directive';
 import { EmailPointerPipe } from './pipes/email-pointer.pipe';
 import {AppInitService} from "./services/appInit.service";
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export function init_app(imgs: AppInitService) {
   return () => {
@@ -55,7 +56,8 @@ export function init_app(imgs: AppInitService) {
     ImageCardComponent,
     CardContentComponent,
     HoverDirective,
-    EmailPointerPipe
+    EmailPointerPipe,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

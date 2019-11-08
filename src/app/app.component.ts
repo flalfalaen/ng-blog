@@ -17,6 +17,7 @@ export class AppComponent {
 
     constructor(private readonly one: OneService) {
         this.one.msgToConsole();
+        this.one.msg();
     }
 
 }

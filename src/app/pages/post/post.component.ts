@@ -25,6 +25,7 @@ export class PostComponent implements OnInit, AfterContentInit, AfterViewInit {
   public currentPost = '';
   private post;
   private comments;
+  private commentsNumber = 0;
   private photos;
 
   public showHide = 'Show';
@@ -53,6 +54,7 @@ export class PostComponent implements OnInit, AfterContentInit, AfterViewInit {
         responcePost => {
           this.post = responcePost[0];
           this.comments = responcePost[1];
+          this.commentsNumber = this.comments.length;
           this.photos = responcePost[2][0].url;
           this.loader.hideLoader(); // hide loader
           this.showButton = true;
