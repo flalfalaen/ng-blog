@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OneService } from "./services/providers-exp/one.service";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,9 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-    constructor() {
 
+    constructor(private readonly one: OneService) {
+        this.one.msgToConsole();
     }
+
 }

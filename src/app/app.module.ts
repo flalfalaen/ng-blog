@@ -24,12 +24,17 @@ import { ImageCardComponent } from './pages/post/image-card/image-card.component
 import { CardContentComponent } from './pages/main/card-content/card-content.component';
 import { HoverDirective } from './directives/hover.directive';
 import { EmailPointerPipe } from './pipes/email-pointer.pipe';
+import {AppInitService} from "./services/appInit.service";
 
-export function init_app() {
+export function init_app(imgs: AppInitService) {
   return () => {
     // todo loading photo utl = https://jsonplaceholder.typicode.com/albums/1/photos
     // alert('halt and catch fire'); // halt our app before press 'OK'
-    console.log( 'after app init');
+    // console.log( 'after app init');
+    imgs.getConfig().then(response => {
+      console.log('app_initialized');
+      console.log(response[0]);
+    });
   };
 }
 
@@ -65,6 +70,7 @@ export function init_app() {
     {
       provide: APP_INITIALIZER,
       useFactory: init_app,
+      deps: [AppInitService],
       multi: true
     }
     ],

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HoverDirective } from "../../../directives/hover.directive";
 
 @Component({
   selector: 'app-image-card',
