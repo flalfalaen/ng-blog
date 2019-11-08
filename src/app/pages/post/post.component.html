@@ -30,7 +30,6 @@
     <div class="container" [hidden]="!commentsShow">
         <div *ngFor="let comment of comments" class="media shadow p-3 mb-5 bg-white rounded p-2 m-3">
             <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">
-
             <div class="media-body">
                 <p class="mt-0 lead"><i class="fa fa-lg fa-user mr-1"></i>Commented by: <b> {{ comment.name | titlecase | emailPointer }} </b></p>
                 <p class="lead small text-secondary"><i class="fa fa-lg fa-paper-plane"> </i> <a class="pl-1 text-info" href="mailto:{{ comment.email }}">{{ comment.email | uppercase }}</a></p>
