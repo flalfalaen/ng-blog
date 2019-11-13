@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class TwoService {
 
-  constructor() { }
+    constructor() {
+    }
 
-  msgToConsole(){
-    console.log('service TWO \n\nmethod msgToConsole()');
-  }
+    msgToConsole() {
+        console.log('service TWO \n\nmethod msgToConsole()');
+    }
 
-  msg() {
-    console.log('service TWO \n\nmethod msg()')
-  }
+    msg() {
+        console.log('service TWO \n\nmethod msg()')
+    }
 
 }

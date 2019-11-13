@@ -1,4 +1,3 @@
-<ng-container #postSection>
 <div *ngFor="let data of post" class="container-fluid row justify-content-center">
     <h5 class="mt-0 display-3 text-center">{{ data.title | titlecase }}</h5>
     <div class="row no-gutters position-relative mb-3 justify-content-center text-justify">
@@ -13,30 +12,29 @@
         </div>
     </div>
 </div>
-</ng-container>
 
 <!-- sharing data between component -->
 <app-image-card [imageSrc]="photos"></app-image-card>
 
 <ng-template #showCommentsButton>
     <div class="container mb-5">
-        <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section: ({{ commentsNumber }})</button>
+        <button class="btn btn-info btn-lg btn-block" (click)="toggleShowHide()"><b>{{ showHide }}</b> Comment section:
+            ({{ commentsNumber }})
+        </button>
     </div>
 </ng-template>
 <ng-content *ngIf="!showButton; else showCommentsButton" select="[]"></ng-content>
 <!--<div *ngTemplateOutlet="showCommentsButton"></div>-->
 
-<ng-container>
-    <div class="container" [hidden]="!commentsShow">
-        <div *ngFor="let comment of comments" class="media shadow p-3 mb-5 bg-white rounded p-2 m-3">
-            <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">
-            <div class="media-body">
-                <p class="mt-0 lead"><i class="fa fa-lg fa-user mr-1"></i>Commented by: <b> {{ comment.name | titlecase | emailPointer }} </b></p>
-                <p class="lead small text-secondary"><i class="fa fa-lg fa-paper-plane"> </i> <a class="pl-1 text-info" href="mailto:{{ comment.email }}">{{ comment.email | uppercase }}</a></p>
-                <p>{{ comment.body | titlecase }}</p>
-                <p class="small text-secondary"><i class="fa fa-lg fa-clock-o"></i> {{ comment.id }} min ago... </p>
-            </div>
+<div class="container" [hidden]="!commentsShow">
+    <div *ngFor="let comment of comments" class="media shadow p-3 mb-5 bg-white rounded p-2 m-3">
+        <img src="https://via.placeholder.com/80" class="mr-3 rounded-circle" alt="...">
+        <div class="media-body">
+            <p class="mt-0 lead"><i class="fa fa-lg fa-user mr-1"></i>Commented by:<b> {{ comment.name | titlecase | emailPointer }} </b></p>
+            <p class="lead small text-secondary"><i class="fa fa-lg fa-paper-plane"> </i> <a class="pl-1 text-info" href="mailto:{{ comment.email }}">{{ comment.email | uppercase }}</a></p>
+            <p>{{ comment.body | titlecase }}</p>
+            <p class="small text-secondary"><i class="fa fa-lg fa-clock-o"></i> {{ comment.id }} min ago... </p>
         </div>
     </div>
-</ng-container>
+</div>
 

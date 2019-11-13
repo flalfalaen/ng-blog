@@ -1,40 +1,41 @@
-import { Injectable } from '@angular/core';
-import { TwoService } from "./two.service";
+import {Injectable} from '@angular/core';
+import {TwoService} from "./two.service";
 
 export function f() {
-  return new TwoService();
+    return new TwoService();
 }
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 
-  // useClass: TwoService,
+    // useClass: TwoService,
 
-  useExisting: TwoService,
+    useExisting: TwoService,
 
-  // useValue: {
-  //   msgToConsole: function() {
-  //     console.log('useValue msgToConsole()')
-  //   },
-  //   msg: function () {
-  //     console.log('useValue msg()')
-  //   }
-  // },
+    // useValue: {
+    //   msgToConsole: function() {
+    //     console.log('useValue msgToConsole()')
+    //   },
+    //   msg: function () {
+    //     console.log('useValue msg()')
+    //   }
+    // },
 
-  // useFactory: f,
-  // deps: [TwoService]
+    // useFactory: f,
+    // deps: [TwoService]
 
 })
 export class OneService {
 
-  constructor() { }
+    constructor() {
+    }
 
-  msgToConsole(){
-    console.log('service ONE \n\nmethod msgToConsole()');
-  }
+    msgToConsole() {
+        console.log('service ONE \n\nmethod msgToConsole()');
+    }
 
-  msg() {
-    console.log('service ONE \n\nmethod msg()')
-  }
+    msg() {
+        console.log('service ONE \n\nmethod msg()')
+    }
 
 }
