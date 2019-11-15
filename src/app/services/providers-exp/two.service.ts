@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 })
 export class TwoService {
 
+    public oneVariable = 'this is the string TWO of service TWO';
+
     constructor() {
     }
 
@@ -14,6 +16,10 @@ export class TwoService {
 
     msg() {
         console.log('service TWO \n\nmethod msg()')
+    }
+
+    msg_TWO() {
+        console.log('service TWO --> personal msg_TWO() method')
     }
 
 }

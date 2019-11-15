@@ -16,8 +16,12 @@ import { OneService } from "./services/providers-exp/one.service";
 export class AppComponent {
 
     constructor(private readonly one: OneService) {
+        console.log(this.one.oneVariable);
         this.one.msgToConsole();
         this.one.msg();
+        // this.one.msg_TWO();
+        // this.one.msg_OneService();
+        // this.one.msg_ofValue();
     }
 
 }
