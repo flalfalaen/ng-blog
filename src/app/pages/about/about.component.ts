@@ -24,6 +24,7 @@ export class AboutComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngDoCheck() {
+    console.log(this.test);
 
   }
 
