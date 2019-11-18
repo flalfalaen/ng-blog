@@ -8,7 +8,6 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {MainComponent} from './pages/main/main.component';
 import {NewsComponent} from './pages/news/news.component';
 import {PostComponent} from './pages/post/post.component';
-import {AboutComponent} from './pages/about/about.component';
 import {AdminDashboardComponent} from './pages/admin-dashboard/admin-dashboard.component';
 import {UserCabinetComponent} from './pages/user-cabinet/user-cabinet.component';
 import {PopupComponent} from './shared/popup/popup.component';
@@ -45,7 +44,6 @@ export function init_app(imgs: AppInitService) {
         MainComponent,
         NewsComponent,
         PostComponent,
-        AboutComponent,
         AdminDashboardComponent,
         UserCabinetComponent,
         PopupComponent,

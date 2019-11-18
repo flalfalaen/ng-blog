@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'news/:id', component: NewsComponent, children: []},
   {path: 'post/:id', component: PostComponent},
   {path: 'about', loadChildren: './pages/about/about/about.module#AboutModule'},
+  // {path: 'about', component: AboutComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
