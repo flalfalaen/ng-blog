@@ -25,6 +25,8 @@ import {HoverDirective} from './directives/hover.directive';
 import {EmailPointerPipe} from './pipes/email-pointer.pipe';
 import {AppInitService} from "./services/appInit.service";
 import {NotFoundComponent} from './pages/not-found/not-found.component';
+import {AuthService} from "./services/auth.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 export function init_app(imgs: AppInitService) {
     return () => {
@@ -65,7 +67,7 @@ export function init_app(imgs: AppInitService) {
 
     ],
     entryComponents: [LoaderComponent, LogInSignInFormComponent],
-    providers: [ApiService, LoaderService,
+    providers: [ApiService, LoaderService, JwtHelperService, AuthService,
         {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
         {
             provide: APP_INITIALIZER,
